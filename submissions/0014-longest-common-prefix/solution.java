@@ -1,20 +1,24 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        String prefix = "";
-        int min=10000000;
-        for(int i=0; i<strs.length; i++){
-            if(strs[i].length()<min){
-                min=strs[i].length();
+        int minlength=201;
+        String minstring = "";
+        for(String s: strs){
+            if(s.length()<minlength){
+                minlength=s.length();
+                minstring = s;
             }
         }
-        for(int i=0; i<min; i++){//fixes the index to be checked
-            for(int j=0; j<strs.length-1; j++){//changes the element of the array
-                if(!(strs[j].substring(i, i+1).equals(strs[j+1].substring(i, i+1)))){
+        String prefix = "";
+        String common = "";
+        for(int j=0; j<minlength; j++){
+            for(int i=0; i<strs.length; i++){
+                common = minstring.substring(j, j+1);
+                if(!(strs[i].substring(j, j+1).equals(common))){
                     return prefix;
                 }
             }
-            prefix+=strs[0].substring(i, i+1);  
+            prefix+=common;
         }
-    return prefix;
+        return prefix;
     }
 }
