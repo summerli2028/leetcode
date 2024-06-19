@@ -1,6 +1,7 @@
 class Solution {
     public int  romanToInt(String s) {
         int sum=0;
+        s+="k";
         for(int i=0; i<s.length()-1; i++){
             if(s.substring(i, i+1).equals("I")){
                 if(s.substring(i+1, i+2).equals("V")||s.substring(i+1, i+2).equals("X")){
@@ -36,22 +37,6 @@ class Solution {
                     sum+=1000;
             }
             
-        }
-        String test = s.substring(s.length()-1);
-        if(test.equals("I")){
-            sum+=1;
-        } else if(test.equals("V")){
-            sum+=5;
-        } else if(test.equals("X")){
-            sum+=10;
-        } else if(test.equals("L")){
-            sum+=50;
-        } else if(test.equals("C")){
-            sum+=100;
-        } else if(test.equals("D")){
-            sum+=500;
-        } else if(test.equals("M")){
-            sum+=1000;
         }
 
     return sum; }
